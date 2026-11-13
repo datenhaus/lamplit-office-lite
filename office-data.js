@@ -20,6 +20,8 @@ window.OFFICE = {
   goal: "Ship the spring newsletter by Friday.",
   updated: minutesAgo(0),                   // when this file was last written (ISO date and time)
   refreshSeconds: 30,                       // how often the page re-reads this file (5 to 3600)
+  theme: "dark",                            // colours the page starts with: "dark", "light" or "auto" (follows the device).
+                                            // A visitor can switch with the button or the T key; the browser remembers that choice.
 
   room: { title: "Workshop", note: "Where things get built" },
 

@@ -245,6 +245,60 @@ h1{font-size:clamp(30px,4vw,58px);line-height:1.12;font-weight:600;letter-spacin
   .korn,.vig{display:none}
   .s-wartet .scene,.s-sonst .scene{filter:brightness(.6) saturate(.55)}
 }
+
+/* ---------- v0.2: buttons, light scheme, keyboard, phone ---------- */
+.werk{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;justify-content:flex-end}
+.knopf{cursor:pointer;min-height:40px;padding:6px 16px;font-size:16px;font-weight:700;letter-spacing:.04em;border-radius:999px;
+  border:2px solid var(--line2);background:rgba(10,12,16,.55);color:var(--text)}
+.knopf:hover{border-color:var(--amber)}
+.knopf:focus-visible{outline:3px solid var(--amber2);outline-offset:3px}
+.knopf kbd,.hilfe kbd{font:inherit;font-weight:700;display:inline-block;min-width:1.7em;text-align:center;padding:0 6px;border:1px solid var(--line2);border-radius:5px;background:var(--panel2);color:var(--text)}
+.knopf kbd{margin-left:8px;min-width:0;font-size:16px;opacity:.85}
+.seat:focus{outline:none}
+.seat:focus-visible{outline:3px solid var(--amber2);outline-offset:3px;z-index:2}
+.tipp{margin-top:12px;font-size:16px;color:var(--mute)}
+.tipp[hidden]{display:none}
+.fuss{margin-top:18px;font-size:16px;color:var(--mute)}
+.sitze{grid-auto-flow:dense}
+.kompakt .seat{cursor:pointer}
+.kompakt .chip{max-width:100%;white-space:normal;line-height:1.2;padding-top:3px;padding-bottom:3px}
+.kompakt .seat.offen{grid-column:1 / -1}
+.kompakt .seat.offen .ut{display:flex;height:auto;min-height:3.4em;padding:8px 12px 12px}
+.kompakt .seat.offen .utxt{-webkit-line-clamp:8}
+.kompakt .seat.offen .rl{display:-webkit-box;min-height:0}
+.kompakt .seat.offen .szw{max-width:340px;margin:0 auto;width:100%}
+.kompakt .seat.offen{background:#06080b}
+.kompakt .seat.offen .inf{background:var(--panel)}
+dialog.hilfe{max-width:min(560px,calc(100vw - 24px));width:100%;padding:22px 24px 24px;border:2px solid var(--line2);border-radius:12px;background:var(--panel);color:var(--text);font-size:18px}
+dialog.hilfe::backdrop{background:rgba(0,0,0,.6)}
+.hilfe h2{font-size:21px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px}
+.hilfe dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px 16px;margin:0 0 18px}
+.hilfe dt{white-space:nowrap}.hilfe dd{margin:0}
+@media(max-width:700px){.werk{justify-content:flex-start}}
+
+/* Light scheme ("day shift"). The film header and the desk pictures stay dark on purpose. */
+html[data-theme="light"]{color-scheme:light;--bg:#f2eee5;--panel:#fffdf8;--panel2:#f3eee3;--line:#d3cab8;--line2:#a79e8d;--text:#1b1e23;--mute:#4a5059}
+html[data-theme="light"] body{background:radial-gradient(1100px 520px at 12% -6%,rgba(240,169,74,.16),transparent 62%),var(--bg)}
+html[data-theme="light"] .kopf{--panel:#10141b;--panel2:#161b24;--line:#2a313d;--line2:#3b4553;--text:#f6f3ec;--mute:#d3cec2;color:var(--text)}
+html[data-theme="light"] .vig,html[data-theme="light"] .korn{display:none}
+html[data-theme="light"] .leg{--amber:#c97a12;--warn:#a67c00;--ok:#1f7a3d;--red:#c0392b;--idle:#69717c}
+html[data-theme="light"] .leg b,html[data-theme="light"] .rsign,html[data-theme="light"] .nm,html[data-theme="light"] .pct{color:var(--text)}
+html[data-theme="light"] .raum{background:linear-gradient(180deg,#fbf8f1,#efeadf 70%);box-shadow:0 18px 40px -28px rgba(60,45,20,.5),inset 0 1px 0 #fff}
+html[data-theme="light"] .seat:hover{border-color:#8a8272}
+html[data-theme="light"] .seat:focus-visible,html[data-theme="light"] .knopf:focus-visible{outline-color:#1b1e23}
+html[data-theme="light"] .kopf .knopf:focus-visible{outline-color:var(--amber2)}
+html[data-theme="light"] .seat .inf{--sc:#69717c}
+html[data-theme="light"] .seat.s-arbeitet .inf{--sc:#c97a12}
+html[data-theme="light"] .seat.s-fertig .inf{--sc:#1f7a3d}
+html[data-theme="light"] .seat.s-pruefung .inf{--sc:#946e00}
+html[data-theme="light"] .seat.s-blockiert .inf{--sc:#c0392b}
+html[data-theme="light"] .chip{background:#fff;color:var(--text)}
+html[data-theme="light"] .chip::before{box-shadow:none}
+html[data-theme="light"] .s-arbeitet .chip{background:#f0a94a;border-color:#c97a12;color:#17110a}
+html[data-theme="light"] .pbar{background:#ddd6c8}
+html[data-theme="light"] .s-arbeitet{border-color:#c9973f;box-shadow:0 0 30px -12px rgba(201,122,18,.7)}
+html[data-theme="light"] .s-blockiert{border-color:#c98078}
+html[data-theme="light"] dialog.hilfe{background:#fffdf8}
 </style>
 </head>
 <body>
@@ -268,7 +322,8 @@ h1{font-size:clamp(30px,4vw,58px);line-height:1.12;font-weight:600;letter-spacin
         <p class="zielz"><b>Goal</b><span id="zieltext">loading …</span></p>
         <div class="aktiv" aria-live="polite"><span class="lz"></span><b id="nArb">0</b><span id="nArbTxt">working right now</span><span class="von" id="nVon"></span></div>
       </div>
-      <div class="zeit"><div class="uhr" id="uhr">--:--:--</div><div><b id="stand">Updated: loading …</b></div><div id="alter"></div></div>
+      <div class="zeit"><div class="uhr" id="uhr">--:--:--</div><div><b id="stand">Updated: loading …</b></div><div id="alter"></div>
+        <div class="werk"><button type="button" class="knopf" id="bTheme" aria-label="Switch to light colours">Light<kbd aria-hidden="true">T</kbd></button><button type="button" class="knopf" id="bKeys" aria-haspopup="dialog">Keys<kbd aria-hidden="true">?</kbd></button></div></div>
     </div>
   </header>
 
@@ -288,7 +343,22 @@ h1{font-size:clamp(30px,4vw,58px);line-height:1.12;font-weight:600;letter-spacin
   <main class="plan" id="plan"></main>
 
   <p class="lnote" id="note" hidden></p>
+  <p class="fuss">Lamplit Office Lite 0.2 · press <b>?</b> for keyboard keys</p>
 </div>
+
+<dialog class="hilfe" id="hilfe" aria-labelledby="hilfeT">
+  <h2 id="hilfeT">Keyboard</h2>
+  <dl>
+    <dt><kbd>Tab</kbd></dt><dd>Go to the next desk or button</dd>
+    <dt><kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> <kbd>↓</kbd></dt><dd>Move from desk to desk</dd>
+    <dt><kbd>1</kbd> … <kbd>6</kbd></dt><dd>Jump to that desk</dd>
+    <dt><kbd>Enter</kbd></dt><dd>Open or close a desk (phone layout: shows its sentence)</dd>
+    <dt><kbd>T</kbd></dt><dd>Light or dark colours</dd>
+    <dt><kbd>R</kbd></dt><dd>Read the data file again now</dd>
+    <dt><kbd>?</kbd></dt><dd>Show this list. <kbd>Esc</kbd> closes it.</dd>
+  </dl>
+  <button type="button" class="knopf" id="bZu">Close</button>
+</dialog>
 
 <script src="office-data.js"></script>
 <script>
@@ -298,7 +368,7 @@ h1{font-size:clamp(30px,4vw,58px);line-height:1.12;font-weight:600;letter-spacin
    The page reads window.OFFICE from office-data.js (same folder) and
    reloads that file every few seconds. All text from the data file is
    escaped before it is shown, so it cannot inject HTML into the page.
-   Lite: one room, up to six desks. MIT licence.
+   Lite: one room, up to six desks. MIT licence. Version 0.2.
    ===================================================================== */
 var DATA_FILE="office-data.js",MAX_DESKS=6;
 var ST={working:"arbeitet",waiting:"wartet",done:"fertig",review:"pruefung",blocked:"blockiert"};
@@ -428,23 +498,37 @@ function szene(k,rq){
 
 
 function seatHtml(key,k,rq){
-  return '<div role="group" class="seat s-sonst" data-k="'+esc(key)+'"><span class="szw">'+szene(k,rq)+'<span class="kz">'+esc(k)+'</span></span>'+
+  return '<div role="group" tabindex="0" class="seat s-sonst" data-k="'+esc(key)+'"><span class="szw">'+szene(k,rq)+'<span class="kz">'+esc(k)+'</span></span>'+
    '<span class="ut"><span class="utxt"></span></span>'+
    '<span class="inf"><span class="plate"><span class="nm"></span><span class="chip"></span></span><span class="rl"></span>'+
    '<span class="pz"><span class="pbar"><i></i></span><span class="pct"></span></span></span></div>';
 }
 
 /* ================= Drawing: only touch what has changed ================= */
-var box=null,seats={},sigAlt=null;
+var box=null,seats={},sigAlt=null,offen=null;
+
+/* ================= v0.2: colour scheme ================= */
+/* Order: the visitor's own choice (saved in this browser) > "theme" in the data file > dark. */
+var THEMA_KEY="lamplit-office-theme",thema="dark",themaFest=false;
+function themaAus(v){v=str(v).toLowerCase();
+  if(v==="auto")return window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";
+  return v==="light"?"light":"dark"}
+function setThema(t,merken){thema=t==="light"?"light":"dark";
+  document.documentElement.setAttribute("data-theme",thema);
+  var b=$("bTheme");if(b){b.firstChild.nodeValue=thema==="light"?"Dark":"Light";b.setAttribute("aria-label","Switch to "+(thema==="light"?"dark":"light")+" colours")}
+  if(merken){themaFest=true;try{localStorage.setItem(THEMA_KEY,thema)}catch(e){}}}
+function themaStart(){var g=null;try{g=localStorage.getItem(THEMA_KEY)}catch(e){}
+  if(g==="light"||g==="dark"){themaFest=true;setThema(g,false)}else setThema(themaAus(window.OFFICE&&window.OFFICE.theme),false)}
+function themaWechsel(){setThema(thema==="light"?"dark":"light",true);zeichne()}
 function aufbau(){
-  $("plan").innerHTML='<section class="raum" aria-label="Room"><div class="rkopf"><span class="rnr" aria-hidden="true">01</span><h3 class="rsign" id="rTitel"></h3><span class="rinfo"></span><span class="rsub" id="rSub"></span></div><div class="sitze"></div></section>';
-  var el=$("plan").firstChild;box={el:el,sitze:el.querySelector(".sitze"),info:el.querySelector(".rinfo"),n:0};
+  $("plan").innerHTML='<section class="raum" aria-label="Room"><div class="rkopf"><span class="rnr" aria-hidden="true">01</span><h3 class="rsign" id="rTitel"></h3><span class="rinfo"></span><span class="rsub" id="rSub"></span></div><div class="sitze"></div><p class="tipp" hidden>Tap a desk to read its sentence.</p></section>';
+  var el=$("plan").firstChild;box={el:el,sitze:el.querySelector(".sitze"),info:el.querySelector(".rinfo"),tipp:el.querySelector(".tipp"),n:0,cols:1,kom:false};
 }
 function spalten(){
   if(!box||!box.n)return;var w=box.el.clientWidth-34;if(w<=0)return;
   var eng=w<560,min=eng?150:212,gap=eng?10:14,max=Math.max(1,Math.floor((w+gap)/(min+gap))),n=box.n;
   var cols=n<=max?n:Math.ceil(n/Math.ceil(n/max)),kom=eng&&cols>1;
-  box.sitze.style.setProperty("--cols",cols);box.sitze.className="sitze"+(kom?" kompakt":"");
+  box.sitze.style.setProperty("--cols",cols);box.sitze.className="sitze"+(kom?" kompakt":"");box.cols=cols;box.kom=kom;box.tipp.hidden=!kom;
 }
 /* If a member has "started" and "minutes", the bar moves by itself while the status is "working". */
 function schaetze(D){var j=Date.now();arr(D.team).forEach(function(m){if(m&&m.status==="working"&&m.started&&m.minutes){var t=new Date(m.started).getTime(),dd=Number(m.minutes);if(!isFinite(t)||!(dd>0))return;m.progress=Math.round(Math.max(5,Math.min(95,(j-t)/(dd*60000)*100)))}})}
@@ -459,10 +543,11 @@ function zeichne(){
   var al="";if(gut){var min=Math.round((Date.now()-t)/60000);al=min<1?"just now":min===1?"1 minute ago":min<120?min+" minutes ago":min<2880?Math.round(min/60)+" hours ago":Math.round(min/1440)+" days ago"}
   txt($("alter"),al);txt($("zieltext"),str(D.goal)||"No goal set.");
   var raum=D.room&&typeof D.room==="object"?D.room:{};
-  txt($("rTitel"),"Int. "+(str(raum.title)||"Office")+" – Night");txt($("rSub"),str(raum.note));
+  txt($("rTitel"),"Int. "+(str(raum.title)||"Office")+" – "+(thema==="light"?"Day":"Night"));
+  if(!themaFest){var th=themaAus(D.theme);if(th!==thema)setThema(th,false)}txt($("rSub"),str(raum.note));
   var alle=arr(D.team).filter(function(m){return m&&typeof m==="object"}),team=alle.slice(0,MAX_DESKS),zahl={arbeitet:0,wartet:0,fertig:0,pruefung:0,blockiert:0};
   var sig=team.map(function(m,i){return i+kz(m)+":"+deskKey(m)}).join("|");
-  if(sig!==sigAlt){sigAlt=sig;box.n=team.length;seats={};
+  if(sig!==sigAlt){sigAlt=sig;box.n=team.length;seats={};offen=null;
     box.sitze.innerHTML=team.map(function(m,i){return seatHtml(String(i),kz(m),deskKey(m))}).join("");
     Array.prototype.forEach.call(box.sitze.children,function(b){var q=function(s){return b.querySelector(s)};
       seats[b.getAttribute("data-k")]={b:b,utxt:q(".utxt"),nm:q(".nm"),chip:q(".chip"),rl:q(".rl"),bar:q(".pbar i"),pct:q(".pct")}});
@@ -470,12 +555,12 @@ function zeichne(){
   }
   team.forEach(function(m,i){
     var s=seats[String(i)],sk=stKey(m.status);if(!s)return;if(zahl.hasOwnProperty(sk))zahl[sk]++;
-    var cls="seat s-"+sk;if(s.b.className!==cls)s.b.className=cls;
+    var cls="seat s-"+sk+(offen===String(i)?" offen":"");if(s.b.className!==cls)s.b.className=cls;
     var p=pct(m),name=str(m.name)||kz(m),sagt=str(m.says)||str(m.task)||"…";
     txt(s.utxt,sagt.length>220?sagt.slice(0,217)+"…":sagt);
     txt(s.nm,name);txt(s.chip,stText(m.status));txt(s.rl,str(m.role));txt(s.pct,p+" %");
     var w=p+"%";if(s.bar.style.width!==w)s.bar.style.width=w;
-    var lab=name+", "+stText(m.status)+", "+p+" percent";if(s.b.getAttribute("aria-label")!==lab)s.b.setAttribute("aria-label",lab);
+    var lab=name+", "+stText(m.status)+", "+p+" percent. "+sagt;if(s.b.getAttribute("aria-label")!==lab)s.b.setAttribute("aria-label",lab);
   });
   txt(box.info,team.length+(team.length===1?" desk":" desks")+" · "+zahl.arbeitet+" working");
   Object.keys(zahl).forEach(function(k){txt($("z-"+k),zahl[k])});
@@ -488,10 +573,48 @@ function zeichne(){
 function uhr(){txt($("uhr"),new Date().toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit",second:"2-digit"}))}
 /* Reload the data file. Works from a web server and from a plain folder on disk (file://). */
 function pause(){var n=Number(window.OFFICE&&window.OFFICE.refreshSeconds);if(!isFinite(n))n=30;return Math.max(5,Math.min(3600,n))*1000}
-function neuLaden(){var s=document.createElement("script"),fertig=function(){s.remove();setTimeout(neuLaden,pause())};
+function lade(danach){var s=document.createElement("script"),fertig=function(){s.remove();if(danach)danach()};
   s.src=DATA_FILE+"?"+Date.now();s.onload=function(){zeichne();fertig()};s.onerror=fertig;document.head.appendChild(s)}
+function neuLaden(){lade(function(){setTimeout(neuLaden,pause())})}
 
-aufbau();
+/* ================= v0.2: keyboard, tap and buttons ================= */
+function sitzListe(){return box?Array.prototype.slice.call(box.sitze.children):[]}
+function sitzVon(el){while(el&&el!==document.body){if(el.classList&&el.classList.contains("seat"))return el;el=el.parentNode}return null}
+function oeffne(b){var k=b.getAttribute("data-k");offen=offen===k?null:k;
+  sitzListe().forEach(function(x){x.classList.toggle("offen",x.getAttribute("data-k")===offen)});
+  if(offen!==null&&b.scrollIntoView)b.scrollIntoView({block:"nearest"})}
+function hilfe(auf){var d=$("hilfe");if(!d)return;
+  if(typeof d.showModal!=="function"){if(auf)alert("Keys: arrows move between desks, 1-6 jump to a desk, Enter opens a desk, T light/dark, R reload data.");return}
+  if(auf&&!d.open)d.showModal();else if(!auf&&d.open)d.close()}
+document.addEventListener("click",function(e){var b=sitzVon(e.target);if(b)oeffne(b)});
+document.addEventListener("keydown",function(e){
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  var d=$("hilfe"),k=e.key,ziel=e.target,tag=ziel&&ziel.tagName;
+  if(d&&d.open){if(k==="?"){e.preventDefault();hilfe(false)}return}
+  if(tag==="INPUT"||tag==="TEXTAREA"||tag==="SELECT")return;
+  var L=sitzListe(),b=sitzVon(ziel),i=b?L.indexOf(b):-1,n=L.length,c=box?box.cols:1,j=-1;
+  if(k==="t"||k==="T"){themaWechsel();e.preventDefault();return}
+  if(k==="r"||k==="R"){lade();e.preventDefault();return}
+  if(k==="?"||k==="h"||k==="H"){hilfe(true);e.preventDefault();return}
+  if(/^[1-9]$/.test(k)){j=Number(k)-1;if(j>=n)return}
+  else if(i<0)return;
+  else if(k==="Enter"||k===" "){oeffne(b);e.preventDefault();return}
+  else if(k==="ArrowRight")j=Math.min(n-1,i+1);
+  else if(k==="ArrowLeft")j=Math.max(0,i-1);
+  else if(k==="ArrowDown")j=i+c<n?i+c:i;
+  else if(k==="ArrowUp")j=i-c>=0?i-c:i;
+  else if(k==="Home")j=0;
+  else if(k==="End")j=n-1;
+  else return;
+  e.preventDefault();if(L[j])L[j].focus();
+});
+$("bTheme").addEventListener("click",themaWechsel);
+$("bKeys").addEventListener("click",function(){hilfe(true)});
+$("bZu").addEventListener("click",function(){hilfe(false)});
+if(window.matchMedia){var mq=window.matchMedia("(prefers-color-scheme: light)"),mqf=function(){if(!themaFest)zeichne()};
+  if(mq.addEventListener)mq.addEventListener("change",mqf);else if(mq.addListener)mq.addListener(mqf)}
+
+aufbau();themaStart();
 window.addEventListener("resize",spalten);
 zeichne();uhr();setInterval(uhr,1000);setTimeout(neuLaden,pause());setInterval(zeichne,10000);
 </script>

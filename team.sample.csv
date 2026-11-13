@@ -1,0 +1,7 @@
+code,name,role,desk,status,progress,says
+MO,Morgan,Lead: plans and signs off,board,working,55,"Two tasks are in review. I am lining up tomorrow's work."
+KA,Kai,Builder: writes the code,terminal,working,40,"The sign-up form works. Now the thank-you page."
+SA,Sam,Writer: newsletter copy,browser,review,90,"Draft is with Jo. I am shortening the ending while I wait."
+JO,Jo,Reviewer: honest feedback,review,working,40,"Reading Sam's draft. Strong opening, the ending is too long."
+RA,Ravi,Data: counts what happened,chart,done,100,"Last week's numbers are in. Tuesday was the best day."
+NO,Noor,QA: clicks through everything,notes,blocked,30,"I need a test login for the sign-up page. I cannot go on without it."

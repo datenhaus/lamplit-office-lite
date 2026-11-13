@@ -1,0 +1,18 @@
+{
+  "title": "Harbor Lane Office",
+  "kicker": "Night shift",
+  "subtitle": "Who is working on what, right now",
+  "goal": "Ship the spring newsletter by Friday.",
+  "refreshSeconds": 30,
+  "theme": "dark",
+  "room": { "title": "Workshop", "note": "Where things get built" },
+  "note": "Sample data written by update_office.py. Every name and sentence on this page is invented.",
+  "team": [
+    { "code": "MO", "name": "Morgan", "role": "Lead: plans and signs off", "desk": "board", "status": "working", "progress": 55, "says": "Two tasks are in review. I am lining up tomorrow's work." },
+    { "code": "KA", "name": "Kai", "role": "Builder: writes the code", "desk": "terminal", "status": "working", "progress": 40, "says": "The sign-up form works. Now the thank-you page." },
+    { "code": "SA", "name": "Sam", "role": "Writer: newsletter copy", "desk": "browser", "status": "review", "progress": 90, "says": "Draft is with Jo. I am shortening the ending while I wait." },
+    { "code": "JO", "name": "Jo", "role": "Reviewer: honest feedback", "desk": "review", "status": "working", "progress": 40, "says": "Reading Sam's draft. Strong opening, the ending is too long." },
+    { "code": "RA", "name": "Ravi", "role": "Data: counts what happened", "desk": "chart", "status": "done", "progress": 100, "says": "Last week's numbers are in. Tuesday was the best day." },
+    { "code": "NO", "name": "Noor", "role": "QA: clicks through everything", "desk": "notes", "status": "blocked", "progress": 30, "says": "I need a test login for the sign-up page. I cannot go on without it." }
+  ]
+}
